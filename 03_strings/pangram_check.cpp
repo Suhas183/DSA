@@ -45,5 +45,4 @@ int main()
     int len = strlen(sentence);
 
     cout<<check_pangram(sentence,len)<<endl;
-    return 0;
 }

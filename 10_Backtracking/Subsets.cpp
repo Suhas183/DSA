@@ -4,7 +4,12 @@ using namespace std;
 
 bool comapre(string a, string b)
 {
-	return a.length() < b.length();
+    if(a.length() == b.length())
+    {
+        return a < b;
+    }
+
+    return a.length() < b.length();
 }
 
 void subsets(char *input, char *output, int i, int j, vector<string> & list_subsets)

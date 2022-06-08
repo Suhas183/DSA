@@ -2,28 +2,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void permutation(string s,int i){
-    //base case
-    if(i==s.length()){
-        cout<<s<<endl;
-        return ;
+#define ll long long
+
+void permutations(vector<int> v, int n, int ind, vector<int> map, vector<int> temp)
+{
+    if(ind == n)
+    {
+        for(int i = 0; i < temp.size(); i++)
+        {
+            cout<<temp[i]<<" ";
+        }
+
+        cout<<endl;
+        return;
     }
- 
- 
-    //recursive case
-    for(int j=i;j<s.length();j++){
-        swap(s[i],s[j]);
-        permutation(s,i+1);
-        swap(s[i],s[j]);
+    for(int i = 0; i < n; i++)
+    {
+        if(map[i] == 0)
+        {
+            map[i] = 1;
+            temp.push_back(v[i]);
+            permutations(v,n,ind + 1,map,temp);
+            temp.pop_back();
+            map[i] = 0;
+        }
     }
-    return ;
 }
 
 int main()
 {
-    string s;
-    cin>>s;
+    vector<int> v = {3,1,2};
+    int n = v.size();
+    vector<int> map(n,0);
+    vector<int> temp;
+    permutations(v,n,0,map,temp);
 
-    permutation(s,0);
     return 0;
 }
